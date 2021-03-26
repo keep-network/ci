@@ -1,0 +1,14 @@
+{
+    "modules": {
+        "github.com/keep-network/keep-core/solidity": {
+            "workflow": "contracts.yml",
+            "downstream": [
+                "github.com/keep-network/keep-core"
+            ]
+        },
+        "github.com/keep-network/keep-core": {
+            "workflow": "client.yml",
+            "downstream": []
+        }
+    }
+}

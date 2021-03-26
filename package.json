@@ -1,0 +1,38 @@
+{
+    "name": "@keep-network/ci",
+    "version": "0.0.1",
+    "description": "",
+    "main": "lib/index.js",
+    "type": "module",
+    "files": [
+        "lib",
+        "config"
+    ],
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "test": "mocha --exit --recursive"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/keep-network/ci.git"
+    },
+    "author": "Jakub Nowakowski <jakub.nowakowski@keep.network>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/keep-network/ci/issues"
+    },
+    "homepage": "https://github.com/keep-network/ci#readme",
+    "dependencies": {
+        "@actions/core": "^1.2.6",
+        "@octokit/core": "^3.3.1"
+    },
+    "devDependencies": {
+        "babel-eslint": "^10.1.0",
+        "chai": "^4.3.4",
+        "eslint": "^7.22.0",
+        "eslint-config-keep": "github:keep-network/eslint-config-keep",
+        "mocha": "^8.3.2",
+        "prettier": "^2.2.1"
+    }
+}
