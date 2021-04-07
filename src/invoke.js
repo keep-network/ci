@@ -1,20 +1,18 @@
-import core from "@actions/core"
-
-import { config, Module } from "@keep-network/ci"
+const core = require("@actions/core")
+const { config, Module } = require("@keep-network/ci")
 
 /**
  * @param {string} environment
  * @param {UpstreamBuilds} upstreamBuilds
  * @param {string} ref
  */
-export async function invoke(environment, upstreamBuilds, ref) {
+async function invoke(environment, upstreamBuilds, ref) {
   if (!upstreamBuilds) {
     const module = config.defaultModule
 
     core.info(
       `upstream builds not provided; invoking default module: ${module.id}`
     )
-
     await module.invoke(environment, upstreamBuilds, ref)
   } else {
     const latestBuild = upstreamBuilds.slice(-1)[0]
@@ -33,7 +31,6 @@ async function invokeDownstream(
   moduleID,
   environment,
   upstreamBuilds,
-
   ref = "master"
 ) {
   const moduleConfig = config.getModuleConfig(moduleID)
@@ -50,3 +47,5 @@ async function invokeDownstream(
     downstreamModule.invoke(environment, upstreamBuilds, ref)
   }
 }
+
+module.exports = { invoke }

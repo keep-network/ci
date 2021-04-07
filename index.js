@@ -1,5 +1,5 @@
-import core from "@actions/core"
-import { invoke } from "./src/invoke.js"
+const core = require("@actions/core")
+const { invoke } = require("./src/invoke.js")
 
 async function run() {
   try {
