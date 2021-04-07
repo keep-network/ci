@@ -1,0 +1,27 @@
+name: Main
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'The environment to run the build for'
+        required: false
+        default: 'dev'
+      upstream_builds:
+        description: 'Upstream builds, if empty runs a default workflow'
+        required: false
+      ref:
+        description: 'Ref'
+        required: false
+        default: 'master'
+
+jobs:
+  run-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: keep-network/run-workflow
+        with:
+          environment: ${{ github.event.inputs.environment }}
+          upstream_builds: ${{ github.event.inputs.upstream_builds }}
+          ref: ${{ github.event.inputs.ref }}
