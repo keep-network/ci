@@ -21,6 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: keep-network/run-workflow@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           environment: ${{ github.event.inputs.environment }}
           upstream_builds: ${{ github.event.inputs.upstream_builds }}
