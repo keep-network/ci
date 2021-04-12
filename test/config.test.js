@@ -1,5 +1,7 @@
 import { expect } from "chai"
-import { config, Config } from "../lib/config.js"
+
+import { config } from "../lib/index.js"
+import { Config } from "../lib/config.js"
 
 describe("Config", function () {
   it("reads default configuration file", async () => {
