@@ -1,5 +1,5 @@
 const core = require("@actions/core")
-const { config, Module } = require("@keep-network/ci")
+const { config, Module, validateUpstreamBuilds } = require("@keep-network/ci")
 
 /**
  * @param {string} environment
@@ -15,6 +15,20 @@ async function invoke(environment, upstreamBuilds, ref) {
     )
     await module.invoke(environment, upstreamBuilds, ref)
   } else {
+    const { isValid, errors } = validateUpstreamBuilds(upstreamBuilds)
+
+    if (!isValid) {
+      throw new Error(`invalid upstream_builds: ${JSON.stringify(errors)}`)
+    }
+
+    upstreamBuilds = JSON.parse(upstreamBuilds)
+
+    if (upstreamBuilds.length < 1) {
+      throw new Error(
+        `invalid length of upstream_builds provided: ${upstreamBuilds}`
+      )
+    }
+
     const latestBuild = upstreamBuilds.slice(-1)[0]
 
     await invokeDownstream(latestBuild.module, environment, upstreamBuilds, ref)
