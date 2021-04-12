@@ -12,6 +12,10 @@ inputs:
     description: "Ref"
     required: false
     default: "master"
+    
+branding:
+  color: "purple"
+  icon: "wind"
 
 runs:
   using: "node12"
