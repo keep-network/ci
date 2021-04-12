@@ -13,10 +13,7 @@
         "lint:fix": "eslint --fix .",
         "test": "mocha --exit --recursive"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/keep-network/ci.git"
-    },
+    "repository": "git+https://github.com/keep-network/ci.git",
     "author": "Jakub Nowakowski <jakub.nowakowski@keep.network>",
     "license": "MIT",
     "bugs": {
