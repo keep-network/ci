@@ -1,0 +1,31 @@
+name: "Notify workflow completed"
+description: "Dispatches event to run a release manager workflow after the current workflow completed its' execution"
+inputs:
+  module:
+    description: "Current module name"
+    required: true
+  url:
+    description: "Current execution URL"
+    required: true
+  environment:
+    description: "The environment to run the build for"
+    required: false
+    default: "dev"
+  upstream_builds:
+    description: "Upstream builds, with the current build details appended"
+    required: true
+  ref:
+    description: "Reference"
+    required: false
+    default: "master"
+  version:
+    description: ""
+    required: true
+
+branding:
+  color: "purple"
+  icon: "rotate-ccw"
+
+runs:
+  using: "node12"
+  main: "dist/main.js"
