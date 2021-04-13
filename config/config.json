@@ -20,7 +20,7 @@
             ]
         },
         "github.com/keep-network/keep-ecdsa": {
-            "workflow": "contracts.yml",
+            "workflow": "client-ethereum.yml",
             "downstream": [
                 "github.com/keep-network/tbtc/solidity"
             ]
