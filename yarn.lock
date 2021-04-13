@@ -877,7 +877,7 @@
 
 "@keep-network/ci@github:keep-network/ci":
   version "0.0.1"
-  resolved "git+ssh://git@github.com/keep-network/ci.git#e19552e90a2dcf67cd35bea54028b55a2448ba2b"
+  resolved "git+ssh://git@github.com/keep-network/ci.git#c155bb6a000a2f85cc6ef915087cf60d80fffa86"
   dependencies:
     "@actions/core" "^1.2.6"
     "@octokit/core" "^3.3.1"
