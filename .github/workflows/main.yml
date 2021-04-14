@@ -19,6 +19,12 @@ jobs:
   run-release:
     runs-on: ubuntu-latest
     steps:
+      - name: Show dispatch parameters
+        run: |
+          echo "Workflow dispatched on branch: ${{ github.ref }}"
+          echo "environment = ${{ github.event.inputs.environment }}"
+          echo "upstream_builds = ${{ github.event.inputs.upstream_builds }}"
+          echo "ref = ${{ github.event.inputs.ref }}"
       - uses: actions/checkout@v2
       - uses: keep-network/run-workflow@main
         env:
