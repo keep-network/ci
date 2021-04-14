@@ -25,10 +25,13 @@ jobs:
           echo "environment = ${{ github.event.inputs.environment }}"
           echo "upstream_builds = ${{ github.event.inputs.upstream_builds }}"
           echo "ref = ${{ github.event.inputs.ref }}"
+
       - uses: actions/checkout@v2
-      - uses: keep-network/run-workflow@main
+
+      - uses: keep-network/run-workflow@${{ github.event.inputs.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+          BRANCH_NAME: ${{ }}
         with:
           environment: ${{ github.event.inputs.environment }}
           upstream_builds: ${{ github.event.inputs.upstream_builds }}
