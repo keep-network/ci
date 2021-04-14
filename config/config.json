@@ -1,5 +1,5 @@
 {
-    "defaultModule": "github.com/keep-network/keep-ecdsa",
+    "defaultModule": "github.com/keep-network/keep-core/solidity",
     "modules": {
         "github.com/keep-network/keep-core/solidity": {
             "workflow": "contracts.yml",
