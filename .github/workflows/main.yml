@@ -35,4 +35,4 @@ jobs:
         with:
           environment: ${{ github.event.inputs.environment }}
           upstream_builds: ${{ github.event.inputs.upstream_builds }}
-          ref: 'rfc-18/integration' # TODO: change later to ${{ github.event.inputs.ref }}
+          ref: ${{ github.event.inputs.ref }}
