@@ -19,7 +19,7 @@ jobs:
   run-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Show dispatch parameters
+      - name: Show workflow dispatch parameters
         run: |
           echo "Workflow dispatched on branch: ${{ github.ref }}"
           echo "environment = ${{ github.event.inputs.environment }}"
@@ -28,12 +28,8 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      # Currently branch name used in action address cannot be substituted with
-      # ${{ github.event.inputs.ref }} variable, because `github` context is
-      # not availible from step.uses.
-      # See: https://github.com/actions/runner/issues/895 for more details.
-      # Using hardcoded branch name for now.
-      - uses: keep-network/run-workflow@rfc-18/integration
+      - name: Invoke downstream workflow
+        uses: keep-network/run-workflow@rfc-18/integration # TODO: replace 'rfc-18/integration ' with 'main'
         env:
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
         with:
