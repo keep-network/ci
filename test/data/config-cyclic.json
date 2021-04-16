@@ -16,14 +16,13 @@
         "github.com/keep-network/keep-ecdsa/solidity": {
             "workflow": "contracts.yml",
             "downstream": [
-                "github.com/keep-network/keep-ecdsa"
+                "github.com/keep-network/keep-ecdsa",
+                "github.com/keep-network/tbtc/solidity"
             ]
         },
         "github.com/keep-network/keep-ecdsa": {
             "workflow": "contracts.yml",
-            "downstream": [
-                "github.com/keep-network/tbtc/solidity"
-            ]
+            "downstream": []
         },
         "github.com/keep-network/tbtc/solidity": {
             "workflow": "contracts.yml",

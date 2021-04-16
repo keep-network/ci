@@ -1,14 +1,32 @@
 {
-    "defaultModule": "github.com/keep-network/keep-core/solidity",
+    "defaultModule": "github.com/keep-network/keep-ecdsa",
     "modules": {
-        "github.com/keep-network/keep-core/solidity": {
-            "workflow": "contracts.yml",
+        "github.com/keep-network/keep-ecdsa": {
+            "workflow": "client-ethereum.yml",
             "downstream": [
-                "github.com/keep-network/keep-core"
+                "github.com/keep-network/tbtc/solidity"
             ]
         },
-        "github.com/keep-network/keep-core": {
-            "workflow": "client.yml"
+        "github.com/keep-network/tbtc/solidity": {
+            "workflow": "contracts.yml",
+            "downstream": [
+                "github.com/keep-network/keep-core/solidity/dashboard",
+                "github.com/keep-network/tbtc.js"
+            ]
+        },
+        "github.com/keep-network/keep-core/solidity/dashboard": {
+            "workflow": "dashboard-testnet.yml",
+            "downstream": []
+        },
+        "github.com/keep-network/tbtc.js": {
+            "workflow": "node.yml",
+            "downstream": [
+                "github.com/keep-network/tbtc-dapp"
+            ]
+        },
+        "github.com/keep-network/tbtc-dapp": {
+            "workflow": "dapp.yml",
+            "downstream": []
         }
     }
 }
