@@ -1,0 +1,11 @@
+{
+    "defaultModule": "github.com/keep-network/keep-core",
+    "modules": {
+        "github.com/keep-network/keep-core": {
+            "workflow": "contracts.yml",
+            "downstream": [
+                "github.com/keep-network/keep-core"
+            ]
+        }
+    }
+}

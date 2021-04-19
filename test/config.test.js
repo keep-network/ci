@@ -12,13 +12,31 @@ describe("Config", function () {
 
   it("reads configuration file", async () => {
     const expected = {
-      defaultModuleID: "github.com/keep-network/keep-core/solidity",
+      defaultModuleID: "github.com/keep-network/keep-ecdsa",
       modules: {
-        "github.com/keep-network/keep-core/solidity": {
-          workflow: "contracts.yml",
-          downstream: ["github.com/keep-network/keep-core"],
+        "github.com/keep-network/keep-ecdsa": {
+          workflow: "client-ethereum.yml",
+          downstream: ["github.com/keep-network/tbtc/solidity"],
         },
-        "github.com/keep-network/keep-core": { workflow: "client.yml" },
+        "github.com/keep-network/tbtc/solidity": {
+          workflow: "contracts.yml",
+          downstream: [
+            "github.com/keep-network/keep-core/solidity/dashboard",
+            "github.com/keep-network/tbtc.js",
+          ],
+        },
+        "github.com/keep-network/keep-core/solidity/dashboard": {
+          workflow: "dashboard-testnet.yml",
+          downstream: [],
+        },
+        "github.com/keep-network/tbtc.js": {
+          workflow: "node.yml",
+          downstream: ["github.com/keep-network/tbtc-dapp"],
+        },
+        "github.com/keep-network/tbtc-dapp": {
+          workflow: "dapp.yml",
+          downstream: [],
+        },
       },
     }
 
@@ -65,6 +83,11 @@ describe("Config", function () {
     expect(() => new Config("./test/data/config-cyclic.json")).to.throw(
       Error,
       "cyclic dependency found in module github.com/keep-network/tbtc/solidity to github.com/keep-network/keep-core"
+    )
+
+    expect(() => new Config("./test/data/config-cyclic-2.json")).to.throw(
+      Error,
+      "cyclic dependency found in module github.com/keep-network/keep-core to github.com/keep-network/keep-core"
     )
   })
 
