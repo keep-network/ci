@@ -1,0 +1,11 @@
+{
+  "extends": ["eslint-config-keep", "prettier"],
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "es6": true,
+    "mocha": true
+  },
+  "rules": {
+    "new-cap": "off"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "@keep-network/upstream-builds-query",
+  "version": "0.0.1",
+  "description": "Action to pull properties from from upstream-builds",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "webpack --progress",
+    "test": "mocha --exit --recursive"
+  },
+  "repository": "git+https://github.com/keep-network/upstream-builds-query.git",
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "JavaScript"
+  ],
+  "author": "Jakub Nowakowski <jakub.nowakowski@keep.network",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/keep-network/upstream-builds-query/issues"
+  },
+  "homepage": "https://github.com/keep-network/upstream-builds-query#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.7",
+    "@keep-network/ci": "github:keep-network/ci"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/eslint-parser": "^7.13.14",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/register": "^7.13.16",
+    "@babel/runtime": "^7.13.17",
+    "babel-loader": "^8.2.2",
+    "chai": "^4.3.4",
+    "eslint": "^7.23.0",
+    "eslint-config-keep": "github:keep-network/eslint-config-keep",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.1",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
+  }
+}

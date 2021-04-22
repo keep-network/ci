@@ -1,0 +1,21 @@
+name: "Query upstream builds"
+description: ""
+inputs:
+  upstream-builds:
+    description: ""
+    required: true
+  query:
+    description: ""
+    required: true
+
+outputs:
+  result:
+    description: ""
+
+runs:
+  using: node12
+  main: "./dist/main.js"
+
+branding:
+  icon: 'search'  
+  color: 'blue'
