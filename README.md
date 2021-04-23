@@ -10,7 +10,7 @@
 
 <!-- prettier-ignore-start -->
 ```yaml
-- uses: keep-network/npm-version-bump@v2
+- uses: keep-network/upstream-builds-query
   id: upstream-builds-query
   with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
@@ -28,8 +28,8 @@ The action outputs property with a value of the resolved package version.
 Example usage:
 
 ```yaml
-- uses: keep-network/npm-version-bump@v2
-  id: bump-version
+- uses: keep-network/upstream-builds-query
+  id: upstream-builds-query
 - name: Print resolved version
   run: |
     echo "Resolved version: ${{ steps.upstream-builds-query.outputs.keep-core-solidity-version }}"
