@@ -11,8 +11,8 @@
 <!-- prettier-ignore-start -->
 ```yaml
 - uses: keep-network/npm-version-bump@v2
-id: upstream-builds-query
-with:
+  id: upstream-builds-query
+  with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
 
     query: |
