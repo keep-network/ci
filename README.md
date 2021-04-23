@@ -14,7 +14,6 @@
   id: upstream-builds-query
   with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
-
     query: |
         keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version
         tbtc-solidity-version = github.com/keep-network/tbtc/solidity#version
@@ -30,6 +29,11 @@ Example usage:
 ```yaml
 - uses: keep-network/upstream-builds-query
   id: upstream-builds-query
+  with:
+    upstream-builds: ${{ github.event.inputs.upstream_builds }}
+    query: |
+        keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version
+        tbtc-solidity-version = github.com/keep-network/tbtc/solidity#version
 - name: Print resolved version
   run: |
     echo "Resolved version: ${{ steps.upstream-builds-query.outputs.keep-core-solidity-version }}"
