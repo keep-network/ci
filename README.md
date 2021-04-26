@@ -3,14 +3,12 @@
 [![build](https://github.com/keep-network/upstream-builds-query/actions/workflows/build.yml/badge.svg)](https://github.com/keep-network/upstream-builds-query/actions/workflows/build.yml)
 [![test](https://github.com/keep-network/upstream-builds-query/actions/workflows/test.yml/badge.svg)](https://github.com/keep-network/upstream-builds-query/actions/workflows/test.yml)
 
-
-
 <!-- TODO: Write documentation -->
 ## Usage
 
 <!-- prettier-ignore-start -->
 ```yaml
-- uses: keep-network/upstream-builds-query
+- uses: keep-network/upstream-builds-query@v1
   id: upstream-builds-query
   with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
@@ -27,7 +25,7 @@ The action outputs property with a value of the resolved package version.
 Example usage:
 
 ```yaml
-- uses: keep-network/upstream-builds-query
+- uses: keep-network/upstream-builds-query@v1
   id: upstream-builds-query
   with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
