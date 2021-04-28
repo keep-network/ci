@@ -11,6 +11,7 @@ async function run() {
     )
 
     for (const [key, value] of Object.entries(results)) {
+      core.info(`${key}: ${value}`)
       core.setOutput(key, value)
     }
   } catch (error) {
