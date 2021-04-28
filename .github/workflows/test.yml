@@ -1,0 +1,21 @@
+name: Test
+
+on: [push, workflow_dispatch]
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Load environment variables
+        uses: keep-network/load-env-variables@main # TODO: use @v1 once availible
+        env: 
+          CI_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+        with:
+          environment: 'ropsten'
+          ref: 'master'
+
+      - name: Use imported variables
+        run: |
+          echo "NETWORK_ID =  ${{ env.NETWORK_ID }}"
