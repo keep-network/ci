@@ -6,7 +6,8 @@ async function run() {
   try {
     const results = await execute(
       core.getInput("upstream-builds"),
-      getInputAsArray("query")
+      getInputAsArray("query"),
+      core.getInput("fail-on-empty") == "true"
     )
 
     for (const [key, value] of Object.entries(results)) {

@@ -13,7 +13,7 @@ describe("main", function () {
       "module": "github.com/keep-network/keep-core",
       "ref": "",
       "version": "b454cc275c8d3d0e609639cd85244a099fa8ee69",
-      "url": ""
+      "url": "   "
     },
     {
       "module": "github.com/keep-network/keep-ecdsa",
@@ -70,6 +70,88 @@ describe("main", function () {
       const result = execute(upstreamBuildsString, queriesString)
 
       expect(result).deep.equal(expectedResult)
+    })
+
+    describe("when failOnEmpty is true", async () => {
+      const failOnEmpty = true
+
+      it("fails on empty string", async () => {
+        const queriesString =
+          "keep-core-solidity-url = github.com/keep-network/keep-core#url"
+
+        expect(() =>
+          execute(upstreamBuildsString, queriesString, failOnEmpty)
+        ).to.throw(
+          Error,
+          "value is empty for module [github.com/keep-network/keep-core] and property [url]"
+        )
+      })
+
+      it("fails on whitespace-only value", async () => {
+        const queriesString =
+          "keep-core-solidity-url = github.com/keep-network/keep-core/solidity#url"
+
+        expect(() =>
+          execute(upstreamBuildsString, queriesString, failOnEmpty)
+        ).to.throw(
+          Error,
+          "value is empty for module [github.com/keep-network/keep-core/solidity] and property [url]"
+        )
+      })
+
+      it("fails on missing property", async () => {
+        const queriesString =
+          "keep-core-missing-property = github.com/keep-network/keep-core#missing-property"
+
+        expect(() =>
+          execute(upstreamBuildsString, queriesString, failOnEmpty)
+        ).to.throw(
+          Error,
+          "property [missing-property] not found for module [github.com/keep-network/keep-core]"
+        )
+      })
+    })
+
+    describe("when failOnEmpty is false", async () => {
+      const failOnEmpty = false
+
+      it("returns empty value", async () => {
+        const queriesString =
+          "keep-core-solidity-url = github.com/keep-network/keep-core/solidity#url"
+
+        const expectedResult = {
+          "keep-core-solidity-url": "",
+        }
+
+        const result = execute(upstreamBuildsString, queriesString, failOnEmpty)
+
+        expect(result).deep.equal(expectedResult)
+      })
+
+      it("returns whitespace-only value", async () => {
+        const queriesString =
+          "keep-core-url = github.com/keep-network/keep-core#url"
+
+        const expectedResult = {
+          "keep-core-url": "   ",
+        }
+
+        const result = execute(upstreamBuildsString, queriesString, failOnEmpty)
+
+        expect(result).deep.equal(expectedResult)
+      })
+
+      it("fails on missing property", async () => {
+        const queriesString =
+          "keep-core-missing-property = github.com/keep-network/keep-core#missing-property"
+
+        expect(() =>
+          execute(upstreamBuildsString, queriesString, failOnEmpty)
+        ).to.throw(
+          Error,
+          "property [missing-property] not found for module [github.com/keep-network/keep-core]"
+        )
+      })
     })
   })
 })

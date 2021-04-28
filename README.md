@@ -12,6 +12,7 @@
   id: upstream-builds-query
   with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
+    fail-on-empty: false # default: true
     query: |
         keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version
         tbtc-solidity-version = github.com/keep-network/tbtc/solidity#version

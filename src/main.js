@@ -6,9 +6,14 @@ import { parseQueriesArray } from "./query.js"
 /**
  * @param {string} upstreamBuildsString
  * @param {string[]} queriesString
+ * @param {bool} failOnEmpty
  * @return {*}
  */
-export function execute(upstreamBuildsString, queriesString) {
+export function execute(
+  upstreamBuildsString,
+  queriesString,
+  failOnEmpty = true
+) {
   try {
     validateUpstreamBuilds(upstreamBuildsString)
   } catch (err) {
@@ -27,7 +32,18 @@ export function execute(upstreamBuildsString, queriesString) {
   queries.forEach((query) => {
     const build = upstreamBuilds.find((build) => build.module == query.module)
 
-    results[query.output] = build[query.property]
+    const result = build[query.property]
+    if (result === undefined) {
+      throw new Error(
+        `property [${query.property}] not found for module [${query.module}]`
+      )
+    } else if (failOnEmpty && result.trim() === "") {
+      throw new Error(
+        `value is empty for module [${query.module}] and property [${query.property}]`
+      )
+    }
+
+    results[query.output] = result
   })
 
   return results
