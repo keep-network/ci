@@ -6,7 +6,7 @@ export default {
   target: "node",
   output: {
     path: path.resolve("dist"),
-    filename: "[name].js",
+    filename: "[name].cjs",
   },
   resolve: { fallback: { fs: false, path: false, os: false } },
   module: {
