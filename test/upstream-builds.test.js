@@ -6,7 +6,7 @@ describe("Upstream Builds", () => {
   describe("validateUpstreamBuilds", () => {
     it("succeeds for array of two", async () => {
       const { isValid, errors } = validateUpstreamBuilds(
-        `[{"module":"a","ref":"b","version":"c","url":"d"},{"module":"a2","ref":"b","version":"c","url":"d"}]`
+        `[{"module":"a","upstreamRef":"b","version":"c","url":"d"},{"module":"a2","upstreamRef":"b","version":"c","url":"d"}]`
       )
 
       expect(isValid).to.be.true
@@ -22,7 +22,7 @@ describe("Upstream Builds", () => {
 
     it("fails for object", async () => {
       const { isValid, errors } = validateUpstreamBuilds(
-        '{"module":"a","ref":"b"}'
+        '{"module":"a","upstreamRef":"b"}'
       )
 
       expect(isValid).to.be.false
@@ -32,7 +32,7 @@ describe("Upstream Builds", () => {
 
     it("fails for missing required parameter", async () => {
       const { isValid, errors } = validateUpstreamBuilds(
-        '[{"module":"a","ref":"b","version":"c"}]'
+        '[{"module":"a","upstreamRef":"b","version":"c"}]'
       )
 
       expect(isValid).to.be.false
