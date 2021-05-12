@@ -9,7 +9,7 @@ const { dispatch } = require("@keep-network/ci")
  * @param {string} url
  * @param {string} environment
  * @param {string} previousUpstreamBuilds
- * @param {string} ref
+ * @param {string} upstreamRef
  * @param {string} version
  * @return {string} Upstream builds
  */
@@ -18,7 +18,7 @@ async function notifyReleaseManager(
   url,
   environment,
   previousUpstreamBuilds,
-  ref,
+  upstreamRef,
   version
 ) {
   core.info("appending current build info to upstream builds array")
@@ -27,7 +27,7 @@ async function notifyReleaseManager(
   const newUpstreamBuilds = Array.from(JSON.parse(previousUpstreamBuilds))
   newUpstreamBuilds.push({
     module: module,
-    ref: ref,
+    upstream_ref: upstreamRef,
     version: version,
     url: url,
   })
@@ -40,7 +40,7 @@ async function notifyReleaseManager(
     "keep-network",
     "ci",
     "main.yml",
-    ref,
+    upstreamRef,
     environment,
     newUpstreamBuildsString
   )
