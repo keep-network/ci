@@ -31,13 +31,11 @@ describe("Upstream Builds", () => {
     })
 
     it("fails for missing required parameter", async () => {
-      const { isValid, errors } = validateUpstreamBuilds(
-        '[{"module":"a","upstreamRef":"b","version":"c"}]'
-      )
+      const { isValid, errors } = validateUpstreamBuilds('[{"module":"a"}]')
 
       expect(isValid).to.be.false
       expect(errors).to.have.lengthOf(1)
-      expect(errors[0]).property("message", 'requires property "url"')
+      expect(errors[0]).property("message", 'requires property "version"')
     })
   })
 })
