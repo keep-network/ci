@@ -7,7 +7,7 @@ async function run() {
     const url = core.getInput("url")
     const environment = core.getInput("environment")
     const upstreamBuilds = core.getInput("upstream_builds") || "[]"
-    const ref = core.getInput("ref")
+    const upstreamRef = core.getInput("upstream_ref")
     const version = core.getInput("version")
 
     const newUpstreamBuilds = await notifyReleaseManager(
@@ -15,7 +15,7 @@ async function run() {
       url,
       environment,
       upstreamBuilds,
-      ref,
+      upstreamRef,
       version
     )
 
@@ -24,7 +24,7 @@ async function run() {
         `\turl: ${url}\n` +
         `\tenvironment: ${environment}\n` +
         `\tupstream builds: ${newUpstreamBuilds}\n` +
-        `\tref: ${ref}\n` +
+        `\tupstream_ref: ${upstreamRef}\n` +
         `\tversion: ${version}`
     )
   } catch (error) {

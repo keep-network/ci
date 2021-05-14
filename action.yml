@@ -14,7 +14,7 @@ inputs:
   upstream_builds:
     description: "Upstream builds, with the current build details appended"
     required: true
-  ref:
+  upstream_ref:
     description: "Reference"
     required: false
     default: "master"
