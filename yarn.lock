@@ -883,6 +883,14 @@
     "@octokit/core" "^3.3.1"
     jsonschema "^1.4.0"
 
+"@keep-network/ci@https://github.com/keep-network/ci":
+  version "0.0.1"
+  resolved "https://github.com/keep-network/ci#48512f121e1f7ba87fa19ee0cd8924a8256774ef"
+  dependencies:
+    "@actions/core" "^1.2.6"
+    "@octokit/core" "^3.3.1"
+    jsonschema "^1.4.0"
+
 "@octokit/auth-token@^2.4.4":
   version "2.4.5"
   resolved "https://registry.yarnpkg.com/@octokit/auth-token/-/auth-token-2.4.5.tgz#568ccfb8cb46f36441fac094ce34f7a875b197f3"

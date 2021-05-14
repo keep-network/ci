@@ -18,7 +18,7 @@
   "homepage": "https://github.com/keep-network/run-workflow#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@keep-network/ci": "github:keep-network/ci"
+    "@keep-network/ci": "https://github.com/keep-network/ci"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
