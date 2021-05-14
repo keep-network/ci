@@ -4,16 +4,16 @@ const { config, Module, validateUpstreamBuilds } = require("@keep-network/ci")
 /**
  * @param {string} environment
  * @param {UpstreamBuilds} upstreamBuilds
- * @param {string} ref
+ * @param {string} upstreamRef
  */
-async function invoke(environment, upstreamBuilds, ref) {
+async function invoke(environment, upstreamBuilds, upstreamRef) {
   if (!upstreamBuilds) {
     const module = config.defaultModule
 
     core.info(
       `upstream builds not provided; invoking default module: ${module.id}`
     )
-    await module.invoke(environment, upstreamBuilds, ref)
+    await module.invoke(environment, upstreamBuilds, upstreamRef)
   } else {
     const { isValid, errors } = validateUpstreamBuilds(upstreamBuilds)
 
@@ -31,7 +31,7 @@ async function invoke(environment, upstreamBuilds, ref) {
 
     const latestBuild = upstreamBuilds.slice(-1)[0]
 
-    await invokeDownstream(latestBuild.module, environment, upstreamBuilds, ref)
+    await invokeDownstream(latestBuild.module, environment, upstreamBuilds, upstreamRef)
   }
 }
 
@@ -39,13 +39,13 @@ async function invoke(environment, upstreamBuilds, ref) {
  * @param {string} moduleID
  * @param {string} environment
  * @param {UpstreamBuilds} upstreamBuilds
- * @param {string} ref
+ * @param {string} upstreamRef
  */
 async function invokeDownstream(
   moduleID,
   environment,
   upstreamBuilds,
-  ref = "master"
+  upstreamRef = "master"
 ) {
   const moduleConfig = config.getModuleConfig(moduleID)
 
@@ -58,7 +58,7 @@ async function invokeDownstream(
   core.info(`invoking downstream builds for module ${moduleID}`)
   for (const downstreamModuleID of downstream) {
     const downstreamModule = new Module(downstreamModuleID)
-    downstreamModule.invoke(environment, upstreamBuilds, ref)
+    downstreamModule.invoke(environment, upstreamBuilds, upstreamRef)
   }
 }
 

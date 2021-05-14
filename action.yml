@@ -8,7 +8,7 @@ inputs:
   upstream_builds:
     description: "Upstream builds, if empty runs a default workflow"
     required: false
-  ref:
+  upstream_ref:
     description: "Ref"
     required: false
     default: "master"
