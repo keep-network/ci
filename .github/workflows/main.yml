@@ -10,7 +10,7 @@ on:
       upstream_builds:
         description: 'Upstream builds, if empty runs a default workflow'
         required: false
-      ref:
+      upstream_ref:
         description: 'Ref'
         required: false
         default: 'master'
@@ -28,4 +28,4 @@ jobs:
         with:
           environment: ${{ github.event.inputs.environment }}
           upstream_builds: ${{ github.event.inputs.upstream_builds }}
-          ref: ${{ github.event.inputs.ref }}
+          upstream_ref: ${{ github.event.inputs.upstream_ref }}
