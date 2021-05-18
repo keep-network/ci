@@ -40,7 +40,7 @@ async function notifyReleaseManager(
     "keep-network",
     "ci",
     "main.yml",
-    "main",
+    "master",
     upstreamRef,
     environment,
     newUpstreamBuildsString
