@@ -19,14 +19,9 @@ The action supports following input parameters:
 
 ```yaml
       - uses: keep-network/load-env-variables@v1
-        env: 
-          CI_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
         with:
           environment: 'ropsten'
 ```
-NOTE: As action downloads data from private `keep-network/ci` repository,
-authentication is required - token allowing for access to the repository must be
-passed in `CI_GITHUB_TOKEN` environment variable.
 
 ## Configuration of the input file
 
@@ -51,7 +46,7 @@ sensitive data, use GitHub's _Secrets_ functionality.
 ## Using imported variables
 
 Imported variables can be accessed from the `env` context in the job in which
-action was used. To use the variables in different job, you must invoke the
+action was used. To use the variables in a different job, you must invoke the
 `load-env-variables` action there as well .
 
 Example:
@@ -65,8 +60,6 @@ jobs:
     runs-on: ubuntu-latest
       - name: Load environment variables
         uses: keep-network/load-env-variables@v1
-        env: 
-          CI_GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
         with:
           filename: 'ropsten'
       - name: Use loaded variables

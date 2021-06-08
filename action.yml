@@ -23,7 +23,7 @@ runs:
     - name: Download configuration file (${{ inputs.environment }}.env)
       run: |
         echo "-- Running curl.sh ..." 
-        ${{ github.action_path }}/curl.sh ${{ inputs.environment }}.env ${{ inputs.ref }} ${{ env.CI_GITHUB_TOKEN }}
+        ${{ github.action_path }}/curl.sh ${{ inputs.environment }}.env ${{ inputs.ref }}
       shell: bash
     - name: Load variables
       run: |
