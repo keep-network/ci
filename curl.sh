@@ -7,7 +7,6 @@ if ! [ -x "$(command -v curl)" ]; then echo "curl is not installed"; exit 1; fi
 echo "-- Downloading config file: $1 ..."
 set -x
 curl \
-  --header "Authorization: token $3" \
   --header "Accept: application/vnd.github.v3.raw" \
   --output "$1" \
   --show-error \
