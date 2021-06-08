@@ -6,7 +6,7 @@ on:
       environment:
         description: 'The environment to run the build for'
         required: false
-        default: 'dev'
+        default: 'ropsten'
       upstream_builds:
         description: 'Upstream builds, if empty runs a default workflow'
         required: false
