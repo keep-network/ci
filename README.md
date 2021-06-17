@@ -1,1 +1,55 @@
-CI inter module management
+# ci
+
+The `ci` repository stores configuration files and libraries that are used in
+the Keep/tBTC Continous Integration process. It also contains the GitHub Actions
+workflow (`Main`) that acts as an entry point for inter-module builds.
+
+## Storing environment-specific variables
+
+Non-confidential, environment/network-specific variables used in some of the
+GitHub Actions workflows across `keep-network` repositories are stored in the
+`*.env` files under `config/env`. The `keep-network/load-env-variables` GH
+Action can be used to retrieve the data and load it to the workflow runner's
+context. Learn more from the Actions'
+[README](https://github.com/keep-network/load-env-variables/blob/main/README.md). 
+
+## Inter-module dependency management
+
+The `Main` workflow (accessible via `Actions` tab) acts as a single entry point
+for inter-module builds. Triggering this workflow via a workflow_dispatch event
+will start the chain of automatic executions of the workflows which
+build/publish Keep/tBTC modules, according to the order specified in the
+`config/config.json` file. Properly configured order allows the system to
+execute the downstream builds only after the upstream dependencies are built and
+published.
+
+To trigger the `Main` workflow, one needs to provide the following four inputs:
+
+| Label             | Name | Required? | Default value      | Meaning |
+|-------------------|------|-----------|--------------------|--------|
+| Use workflow from |      | Yes       | `Branch: master`   | Specifies which version of the `Main`‘s workflow config file will be used. |
+| The environment to run the build for | `environment` | No | `ropsten` | Specified value will be passed between downstream builds and used for package versioning and dependency management (the provided string will be part of a package's version name). |
+| Upstream builds | `upstream_builds` | No | &lt;empty> | A list of upstream builds that should be used for the building of downstream modules. |
+| Ref |`upstream_ref` | No | `master` | Specifies the branch on which the modules will be built. | 
+
+Learn more about the deployment process and the meaning of the workflow inputs
+by visiting
+[Coda](https://coda.io/d/Building-Keep_d-fmEgBNFVH/Current-CI-process_su1ww#_lupK9).
+
+## Development
+
+Part of the code stored in the `ci` repository is used as a dependency in other
+repositories. If that `ci` code gets modified, the code of the repositories
+referencing it needs to be rebuilt in order for the changes to take effect.
+
+Code that is referenced by other repositories:
+* `config/**` (excluding `config/env/**`)
+* `lib/**`
+
+Repositories referencing the code:
+* https://github.com/keep-network/run-workflow
+* https://github.com/keep-network/notify-workflow-completed
+* https://github.com/keep-network/upstream-builds-query
+
+Refer to the READMEs of those repositories for more information about rebuilding
+the code.
