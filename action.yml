@@ -16,7 +16,7 @@ inputs:
   ref:
     description: Ref of the config file to be used
     required: false
-    default: master
+    default: main
 runs:
   using: composite
   steps:

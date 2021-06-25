@@ -13,7 +13,7 @@ The action supports following input parameters:
 
 - `environment` (required)
 
-- `ref` (optional, default: `master`)
+- `ref` (optional, default: `main`)
 
 ## Action usage
 
