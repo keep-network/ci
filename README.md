@@ -10,7 +10,7 @@ The action supports following input parameters:
 
 - `upstream_builds` (optional)
 
-- `upstream_ref` (optional, default: `master`)
+- `upstream_ref` (optional, default: `main`)
 
 ## Action Usage
 
@@ -19,7 +19,7 @@ The action supports following input parameters:
   with:
     environment: test
     upstream_builds: {}
-    upstream_ref: master
+    upstream_ref: main
 ```
 
 ## External Workflow Configuration
@@ -49,7 +49,7 @@ on:
       upstream_ref:
         description: 'Git reference to checkout (e.g. branch name)'
         required: false
-        default: 'master'
+        default: 'main'
 ```
 
 ## Development
