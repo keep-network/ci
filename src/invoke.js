@@ -45,7 +45,7 @@ async function invokeDownstream(
   moduleID,
   environment,
   upstreamBuilds,
-  upstreamRef = "master"
+  upstreamRef = "main"
 ) {
   const moduleConfig = config.getModuleConfig(moduleID)
 

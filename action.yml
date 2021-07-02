@@ -11,7 +11,7 @@ inputs:
   upstream_ref:
     description: "Ref"
     required: false
-    default: "master"
+    default: "main"
     
 branding:
   color: "purple"
