@@ -17,7 +17,7 @@ inputs:
   upstream_ref:
     description: "Reference"
     required: false
-    default: "master"
+    default: "main"
   version:
     description: ""
     required: true

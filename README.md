@@ -13,7 +13,7 @@ The action supports following input parameters:
 
 - `upstream_builds` (required)
 
-- `upstream_ref` (optional, default: `master`)
+- `upstream_ref` (optional, default: `main`)
 
 - `version` (required)
 
@@ -24,7 +24,7 @@ The action supports following input parameters:
   with:
     environment: test
     upstream_builds: ""
-    upstream_ref: master
+    upstream_ref: main
 ```
 
 ## External Workflow Configuration
