@@ -32,10 +32,10 @@ describe("main", function () {
   describe("execute", () => {
     it("finds value for single query", async () => {
       const queriesString =
-        "keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version"
+        "keep-core-contracts-version = github.com/keep-network/keep-core/solidity#version"
 
       const expectedResult = {
-        "keep-core-solidity-version": "1.2.3-rc.0+feature.123asd",
+        "keep-core-contracts-version": "1.2.3-rc.0+feature.123asd",
       }
 
       const result = execute(upstreamBuildsString, queriesString)
@@ -45,12 +45,12 @@ describe("main", function () {
 
     it("finds values for multiple queries", async () => {
       const queriesString = [
-        "keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version",
+        "keep-core-contracts-version = github.com/keep-network/keep-core/solidity#version",
         "keep-core-version = github.com/keep-network/keep-core#version",
       ]
 
       const expectedResult = {
-        "keep-core-solidity-version": "1.2.3-rc.0+feature.123asd",
+        "keep-core-contracts-version": "1.2.3-rc.0+feature.123asd",
         "keep-core-version": "b454cc275c8d3d0e609639cd85244a099fa8ee69",
       }
 

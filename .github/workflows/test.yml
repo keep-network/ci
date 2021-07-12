@@ -54,11 +54,11 @@ jobs:
             ]
 
           query: |
-              keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version
+              keep-core-contracts-version = github.com/keep-network/keep-core/solidity#version
               keep-core-version = github.com/keep-network/keep-core#version
 
       # Verify outputs of the previous step.
-      - name: Validate `keep-core-solidity-version`
-        run: exit $(expr "${{ steps.upstream-builds-query.outputs.keep-core-solidity-version }}" != "1.2.3-rc.0+feature.123sda")
+      - name: Validate `keep-core-contracts-version`
+        run: exit $(expr "${{ steps.upstream-builds-query.outputs.keep-core-contracts-version }}" != "1.2.3-rc.0+feature.123sda")
       - name: Validate `keep-core-version`
         run: exit $(expr "${{ steps.upstream-builds-query.outputs.keep-core-version }}" != "b454cc275c8d3d0e609639cd85244a099fa8ee69")
