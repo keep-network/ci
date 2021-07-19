@@ -15,10 +15,10 @@
   ],
   "author": "Jakub Nowakowski <jakub.nowakowski@keep.network",
   "license": "MIT",
-  "homepage": "https://github.com/keep-network/run-workflow#readme",
+  "homepage": "https://github.com/keep-network/ci/tree/main/actions/run-workflow#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@keep-network/ci": "github:keep-network/ci"
+    "@keep-network/ci": "file:../../"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",

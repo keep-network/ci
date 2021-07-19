@@ -8,7 +8,7 @@
 
 <!-- prettier-ignore-start -->
 ```yaml
-- uses: keep-network/upstream-builds-query@v1
+- uses: keep-network/ci/actions/upstream-builds-query@v1
   id: upstream-builds-query
   with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
@@ -26,7 +26,7 @@ The action outputs property with a value of the resolved package version.
 Example usage:
 
 ```yaml
-- uses: keep-network/upstream-builds-query@v1
+- uses: keep-network/ci/actions/upstream-builds-query@v1
   id: upstream-builds-query
   with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}

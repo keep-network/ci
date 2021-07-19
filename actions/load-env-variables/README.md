@@ -18,7 +18,7 @@ The action supports following input parameters:
 ## Action usage
 
 ```yaml
-      - uses: keep-network/load-env-variables@v1
+      - uses: keep-network/ci/actions/load-env-variables@v1
         with:
           environment: 'ropsten'
 ```
@@ -59,7 +59,7 @@ jobs:
   run-action:
     runs-on: ubuntu-latest
       - name: Load environment variables
-        uses: keep-network/load-env-variables@v1
+        uses: keep-network/ci/actions/load-env-variables@v1
         with:
           filename: 'ropsten'
       - name: Use loaded variables

@@ -1,1 +1,18 @@
 node_modules/
+ci/actions/notify-workflow-completed/
+ci/actions/notify-workflow-completed/yarn-error.log
+ci/actions/npm-version-bump/
+ci/actions/npm-version-bump/yarn-error.log
+ci/actions/run-workflow/
+ci/actions/run-workflow/yarn-error.log
+ci/actions/upstream-builds-query/
+ci/actions/upstream-builds-query/yarn-error.log
+
+# Editors
+.vscode/
+.idea/
+*.iml
+
+# Temporary files
+/tmp
+ci/actions/npm-version-bump/tmp/

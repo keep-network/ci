@@ -31,7 +31,12 @@ async function invoke(environment, upstreamBuilds, upstreamRef) {
 
     const latestBuild = upstreamBuilds.slice(-1)[0]
 
-    await invokeDownstream(latestBuild.module, environment, upstreamBuilds, upstreamRef)
+    await invokeDownstream(
+      latestBuild.module,
+      environment,
+      upstreamBuilds,
+      upstreamRef
+    )
   }
 }
 

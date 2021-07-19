@@ -10,7 +10,7 @@
     "prepare": "webpack --progress",
     "test": "mocha --exit --recursive"
   },
-  "repository": "git+https://github.com/keep-network/upstream-builds-query.git",
+  "repository": "git+https://github.com/keep-network/ci.git",
   "keywords": [
     "GitHub",
     "Actions",
@@ -19,12 +19,12 @@
   "author": "Jakub Nowakowski <jakub.nowakowski@keep.network",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/keep-network/upstream-builds-query/issues"
+    "url": "https://github.com/keep-network/ci/issues"
   },
-  "homepage": "https://github.com/keep-network/upstream-builds-query#readme",
+  "homepage": "https://github.com/keep-network/ci/tree/main/actions/upstream-builds-query#readme",
   "dependencies": {
     "@actions/core": "^1.2.7",
-    "@keep-network/ci": "github:keep-network/ci"
+    "@keep-network/ci": "file:../../"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",

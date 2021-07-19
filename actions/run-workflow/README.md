@@ -15,7 +15,7 @@ The action supports following input parameters:
 ## Action Usage
 
 ```yaml
-- uses: keep-network/run-workflow@v1
+- uses: keep-network/ci/actions/run-workflow@v1
   with:
     environment: test
     upstream_builds: {}

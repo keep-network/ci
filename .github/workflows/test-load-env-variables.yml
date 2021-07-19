@@ -1,0 +1,28 @@
+name: Test load-env-variables
+
+on:
+  pull_request:
+    paths:
+      - "config/env/**"
+      - ".github/workflows/test-load-env-variables.yml"
+  push:
+    branches:
+      - v1
+    paths:
+      - "config/env/**"
+      - ".github/workflows/test-load-env-variables.yml"
+  workflow_dispatch:
+
+jobs:
+  load-env-variables-manual-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Load environment variables
+        uses: keep-network/ci/actions/load-env-variables@move-actions-to-ci #TODO: chage to @v1
+        with:
+          environment: 'ropsten'
+          ref: 'main'
+
+      - name: Use imported variables
+        run: |
+          echo "NETWORK_ID =  ${{ env.NETWORK_ID }}"
