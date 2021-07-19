@@ -1,0 +1,124 @@
+name: "Test upstream-builds-query"
+on:
+  pull_request:
+    paths:
+      - "actions/upstream-builds-query/**"
+      - ".github/workflows/test-upstream-builds-query.yml"
+  push:
+    branches:
+      - v1
+    paths:
+      - "actions/upstream-builds-query/**"
+      - ".github/workflows/test-upstream-builds-query.yml"
+  workflow_dispatch:
+defaults:
+  run:
+    working-directory: ./actions/upstream-builds-query
+
+jobs:
+  upstream-builds-query-dist:
+    name: Verify committed dist directory
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Calculate hash of committed `dist` directory
+        run: echo "COMMITTED_HASH=${{ hashFiles('./dist/**') }}" >> $GITHUB_ENV
+
+      - run: git config --global url."https://${{ secrets.CI_GITHUB_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
+
+      - run: yarn install
+
+      - name: Calculate expected hash of `dist` directory
+        run: |
+          rm -rf dist && npm run prepare
+          echo "EXPECTED_HASH=${{ hashFiles('./dist/**') }}" >> $GITHUB_ENV
+
+      - name: Compare committed and expected hashes
+        run: |
+          echo "COMMITTED_HASH: ${{ env.COMMITTED_HASH }}"
+          echo "EXPECTED_HASH: ${{ env.EXPECTED_HASH }}"
+
+          export RESULT=$(expr "${{ env.COMMITTED_HASH }}" != "${{ env.EXPECTED_HASH }}")
+          echo "RESULT: $RESULT"
+          exit $RESULT
+
+  upstream-builds-query-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+     
+      - run: git config --global url."https://${{ secrets.CI_GITHUB_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
+
+      - run: yarn install
+
+      - run: yarn run lint
+
+  upstream-builds-query-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+     
+      - run: git config --global url."https://${{ secrets.CI_GITHUB_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
+
+      - run: yarn install
+
+      - run: yarn run test
+
+  upstream-builds-query-e2e-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: keep-network/ci/actions/upstream-builds-query@move-actions-to-ci #TODO: chage to @v1
+        id: upstream-builds-query
+        with:
+          upstream-builds: |
+            [
+              {
+                "module": "github.com/keep-network/keep-core",
+                "ref": "",
+                "version": "wrong-version",
+                "url": ""
+              },
+              {
+                "module": "github.com/keep-network/keep-core/solidity",
+                "ref": "rfc-18/integration",
+                "version": "1.2.3-rc.0+feature.123sda",
+                "url": "https://github.com/keep-network/keep-core/actions/runs/770505797"
+              },
+              {
+                "module": "github.com/keep-network/keep-core",
+                "ref": "rfc-18/integration",
+                "version": "b454cc275c8d3d0e609639cd85244a099fa8ee69",
+                "url": "https://github.com/keep-network/keep-core/actions/runs/770692548"
+              }
+            ]
+
+          query: |
+              keep-core-contracts-version = github.com/keep-network/keep-core/solidity#version
+              keep-core-version = github.com/keep-network/keep-core#version
+
+      # Verify outputs of the previous step.
+      - name: Validate `keep-core-contracts-version`
+        run: exit $(expr "${{ steps.upstream-builds-query.outputs.keep-core-contracts-version }}" != "1.2.3-rc.0+feature.123sda")
+      - name: Validate `keep-core-version`
+        run: exit $(expr "${{ steps.upstream-builds-query.outputs.keep-core-version }}" != "b454cc275c8d3d0e609639cd85244a099fa8ee69")
