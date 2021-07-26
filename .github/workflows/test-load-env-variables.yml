@@ -17,8 +17,10 @@ jobs:
   load-env-variables-manual-test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       - name: Load environment variables
-        uses: keep-network/ci/actions/load-env-variables@move-actions-to-ci #TODO: chage to @v1
+        uses: ./actions/load-env-variables
         with:
           environment: 'ropsten'
           ref: 'main'
