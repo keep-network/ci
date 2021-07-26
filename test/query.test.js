@@ -5,13 +5,13 @@ describe("query", function () {
   describe("parseQuery", () => {
     it("parses single query", async () => {
       const string =
-        "keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version"
+        "keep-core-contracts-version = github.com/keep-network/keep-core/solidity#version"
 
       const expectedResult = [
         {
           module: "github.com/keep-network/keep-core/solidity",
           property: "version",
-          output: "keep-core-solidity-version",
+          output: "keep-core-contracts-version",
         },
       ]
 
@@ -22,7 +22,7 @@ describe("query", function () {
 
     it("parses array of queries", async () => {
       const string = [
-        "keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version",
+        "keep-core-contracts-version = github.com/keep-network/keep-core/solidity#version",
         "keep-core-version=github.com/keep-network/keep-core#version",
       ]
 
@@ -30,7 +30,7 @@ describe("query", function () {
         {
           module: "github.com/keep-network/keep-core/solidity",
           property: "version",
-          output: "keep-core-solidity-version",
+          output: "keep-core-contracts-version",
         },
         {
           module: "github.com/keep-network/keep-core",

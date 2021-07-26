@@ -14,8 +14,8 @@
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
     fail-on-empty: false # default: true
     query: |
-        keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version
-        tbtc-solidity-version = github.com/keep-network/tbtc/solidity#version
+        keep-core-contracts-version = github.com/keep-network/keep-core/solidity#version
+        tbtc-contracts-version = github.com/keep-network/tbtc/solidity#version
 ```
 <!-- prettier-ignore-end -->
 
@@ -31,10 +31,10 @@ Example usage:
   with:
     upstream-builds: ${{ github.event.inputs.upstream_builds }}
     query: |
-        keep-core-solidity-version = github.com/keep-network/keep-core/solidity#version
-        tbtc-solidity-version = github.com/keep-network/tbtc/solidity#version
+        keep-core-contracts-version = github.com/keep-network/keep-core/solidity#version
+        tbtc-contracts-version = github.com/keep-network/tbtc/solidity#version
 - name: Print resolved version
   run: |
-    echo "Resolved version: ${{ steps.upstream-builds-query.outputs.keep-core-solidity-version }}"
-    echo "Resolved version: ${{ steps.upstream-builds-query.outputs.tbtc-solidity-version }}"
+    echo "Resolved version: ${{ steps.upstream-builds-query.outputs.keep-core-contracts-version }}"
+    echo "Resolved version: ${{ steps.upstream-builds-query.outputs.tbtc-contracts-version }}"
 ```
