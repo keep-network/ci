@@ -45,10 +45,8 @@ Keep/tBTC Continous Integration process. The actions' code is kept in the
 about them by reading their READMEs):
 * [load-env-variables](./actions/load-env-variables)
 * [notify-workflow-completed](./actions/notify-workflow-completed)
-* [npm-version-bump](./actions/npm-version-bump)
 * [run-workflow](./actions/run-workflow)
 * [upstream-builds-query](./actions/upstream-builds-query)
-* [tenderly-push-action](./actions/tenderly-push-action)
 
 ## Development
 
@@ -61,10 +59,10 @@ Code that is referenced by some of the actions:
 * `config/**` (excluding `config/env/**`)
 * `lib/**`
 
-Repositories referencing the code:
-* https://github.com/keep-network/run-workflow
-* https://github.com/keep-network/notify-workflow-completed
-* https://github.com/keep-network/upstream-builds-query
+Actions requiriing rebuild after changes in above files:
+* [notify-workflow-completed](./actions/notify-workflow-completed)
+* [run-workflow](./actions/run-workflow)
+* [upstream-builds-query](./actions/upstream-builds-query)
 
-Refer to the READMEs of those repositories for more information about rebuilding
-the code.
+Refer to the READMEs of those actions for more information about rebuilding the
+code.
