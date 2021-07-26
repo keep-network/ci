@@ -28,8 +28,14 @@
         "github.com/keep-network/tbtc/solidity": {
             "workflow": "contracts.yml",
             "downstream": [
-                "github.com/keep-network/keep-core/dashboard",
+                "github.com/keep-network/coverage-pools",
                 "github.com/keep-network/tbtc.js"
+            ]
+        },
+        "github.com/keep-network/coverage-pools": {
+            "workflow": "contracts.yml",
+            "downstream": [
+                "github.com/keep-network/keep-core/dashboard"
             ]
         },
         "github.com/keep-network/keep-core/dashboard": {

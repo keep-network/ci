@@ -899,16 +899,8 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@keep-network/ci@file:../../":
+"@keep-network/ci@file:../..":
   version "0.0.1"
-  dependencies:
-    "@actions/core" "^1.2.6"
-    "@octokit/core" "^3.3.1"
-    jsonschema "^1.4.0"
-
-"@keep-network/ci@github:keep-network/ci":
-  version "0.0.1"
-  resolved "https://codeload.github.com/keep-network/ci/tar.gz/d61015051a3dc9679dd5cc3d6b8b4640e5d93bde"
   dependencies:
     "@actions/core" "^1.2.6"
     "@octokit/core" "^3.3.1"
