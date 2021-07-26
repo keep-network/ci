@@ -122,9 +122,9 @@ describe("Main", function () {
 
     it("updates version for already published environment that don't match initial preid", async () => {
       await verify(
-        "1.1.2-pre",
-        "1.1.2-ropsten.1+feature-branch-2.1234abcd7890XYZ",
-        "ropsten",
+        "0.15.0-pre",
+        "0.15.0-rc.1+feature-branch-2.1234abcd7890XYZ",
+        "rc",
         "@keep-network/tbtc"
       )
     })
