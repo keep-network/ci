@@ -47,7 +47,7 @@ sensitive data, use GitHub's _Secrets_ functionality.
 
 Imported variables can be accessed from the `env` context in the job in which
 action was used. To use the variables in a different job, you must invoke the
-`load-env-variables` action there as well .
+`load-env-variables` action there as well.
 
 Example:
 ```yaml

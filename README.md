@@ -59,7 +59,7 @@ Code that is referenced by some of the actions:
 * `config/**` (excluding `config/env/**`)
 * `lib/**`
 
-Actions requiriing rebuild after changes in above files:
+Actions requiring rebuild after changes in above files:
 * [notify-workflow-completed](./actions/notify-workflow-completed)
 * [run-workflow](./actions/run-workflow)
 * [upstream-builds-query](./actions/upstream-builds-query)
