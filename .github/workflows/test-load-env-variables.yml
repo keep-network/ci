@@ -4,12 +4,14 @@ on:
   pull_request:
     paths:
       - "config/env/**"
+      - "actions/load-env-variables/**"
       - ".github/workflows/test-load-env-variables.yml"
   push:
     branches:
       - v1
     paths:
       - "config/env/**"
+      - "actions/load-env-variables/**"
       - ".github/workflows/test-load-env-variables.yml"
   workflow_dispatch:
 
