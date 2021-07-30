@@ -5,14 +5,14 @@ on:
     paths:
       - "config/env/**"
       - "actions/load-env-variables/**"
-      - ".github/workflows/test-load-env-variables.yml"
+      - ".github/workflows/load-env-variables.yml"
   push:
     branches:
       - main
     paths:
       - "config/env/**"
       - "actions/load-env-variables/**"
-      - ".github/workflows/test-load-env-variables.yml"
+      - ".github/workflows/load-env-variables.yml"
   workflow_dispatch:
 
 jobs:

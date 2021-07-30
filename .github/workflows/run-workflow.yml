@@ -3,13 +3,13 @@ on:
   pull_request:
     paths:
       - "actions/run-workflow/**"
-      - ".github/workflows/test-run-workflow.yml"
+      - ".github/workflows/run-workflow.yml"
   push:
     branches:
       - main
     paths:
       - "actions/run-workflow/**"
-      - ".github/workflows/test-run-workflow.yml"
+      - ".github/workflows/run-workflow.yml"
   workflow_dispatch:
 defaults:
   run:

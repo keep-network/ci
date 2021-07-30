@@ -3,13 +3,13 @@ on:
   pull_request:
     paths:
       - "actions/upstream-builds-query/**"
-      - ".github/workflows/test-upstream-builds-query.yml"
+      - ".github/workflows/upstream-builds-query.yml"
   push:
     branches:
       - main
     paths:
       - "actions/upstream-builds-query/**"
-      - ".github/workflows/test-upstream-builds-query.yml"
+      - ".github/workflows/upstream-builds-query.yml"
   workflow_dispatch:
 defaults:
   run:
