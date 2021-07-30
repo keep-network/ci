@@ -1,0 +1,32 @@
+name: Load environment variables
+description: >
+  Adds the values from specified environment-specific config file to the list
+  of GitHub environment variables. Config file must be stored in keep-network/ci
+  repository under ./config/env/ directory.
+inputs:
+  environment:
+    description: >
+      Name of the environment indicating which config file will be used for
+      variables import. For example, if "ropsten" provided, "ropsten.env" config
+      file will be used for variables import.
+      Config file of the name <environment>.env must exist in
+      keep-network/ci/config/env/ and must contain list of the variables in the
+      name=value format.
+    required: true
+  ref:
+    description: Ref of the config file to be used
+    required: false
+    default: main
+runs:
+  using: composite
+  steps:
+    - name: Download configuration file (${{ inputs.environment }}.env)
+      run: |
+        echo "-- Running curl.sh ..." 
+        ${{ github.action_path }}/curl.sh ${{ inputs.environment }}.env ${{ inputs.ref }}
+      shell: bash
+    - name: Load variables
+      run: |
+        echo "-- Running env-import.sh ..." 
+        ${{ github.action_path }}/env-import.sh -f ./${{ inputs.environment }}.env
+      shell: bash
