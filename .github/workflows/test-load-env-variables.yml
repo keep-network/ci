@@ -8,7 +8,7 @@ on:
       - ".github/workflows/test-load-env-variables.yml"
   push:
     branches:
-      - v1
+      - main
     paths:
       - "config/env/**"
       - "actions/load-env-variables/**"

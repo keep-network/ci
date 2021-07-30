@@ -6,7 +6,7 @@ on:
       - ".github/workflows/test-run-workflow.yml"
   push:
     branches:
-      - v1
+      - main
     paths:
       - "actions/run-workflow/**"
       - ".github/workflows/test-run-workflow.yml"

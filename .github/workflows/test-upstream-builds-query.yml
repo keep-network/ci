@@ -6,7 +6,7 @@ on:
       - ".github/workflows/test-upstream-builds-query.yml"
   push:
     branches:
-      - v1
+      - main
     paths:
       - "actions/upstream-builds-query/**"
       - ".github/workflows/test-upstream-builds-query.yml"
