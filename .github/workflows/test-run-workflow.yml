@@ -1,4 +1,4 @@
-name: "Test run-workflow"
+name: "Run Workflow Action"
 on:
   pull_request:
     paths:

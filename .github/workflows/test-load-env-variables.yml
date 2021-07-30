@@ -1,4 +1,4 @@
-name: Test load-env-variables
+name: "Load Environment Variables Action"
 
 on:
   pull_request:
