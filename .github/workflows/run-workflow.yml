@@ -1,0 +1,24 @@
+name: "Run Workflow Action"
+on:
+  pull_request:
+    paths:
+      - "actions/run-workflow/**"
+      - ".github/workflows/run-workflow.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "actions/run-workflow/**"
+      - ".github/workflows/run-workflow.yml"
+  workflow_dispatch:
+defaults:
+  run:
+    working-directory: ./actions/run-workflow
+
+jobs:
+  run-workflow-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: yarn install
+      - run: yarn run lint

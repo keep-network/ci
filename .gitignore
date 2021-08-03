@@ -1,1 +1,10 @@
 node_modules/
+yarn-error.log
+
+# Editors
+.vscode/
+.idea/
+*.iml
+
+# Temporary files
+/tmp
