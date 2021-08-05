@@ -1,0 +1,7 @@
+node-modules/
+actions/notify-workflow-completed/node_modules/
+actions/notify-workflow-completed/dist/
+
+# Following directories have their own formatting configuration:
+actions/run-workflow/
+actions/upstream-builds-query/
