@@ -48,6 +48,10 @@
                 "github.com/keep-network/tbtc-dapp"
             ]
         },
+        "github.com/keep-network/allthekeeps": {
+            "workflow": "allthekeeps-ropsten.yml",
+            "downstream": []
+        },
         "github.com/keep-network/tbtc-dapp": {
             "workflow": "dapp.yml",
             "downstream": []
