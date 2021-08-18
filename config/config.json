@@ -35,7 +35,8 @@
         "github.com/keep-network/coverage-pools": {
             "workflow": "contracts.yml",
             "downstream": [
-                "github.com/keep-network/keep-core/dashboard"
+                "github.com/keep-network/keep-core/dashboard",
+                "github.com/keep-network/allthekeeps"
             ]
         },
         "github.com/keep-network/keep-core/dashboard": {
