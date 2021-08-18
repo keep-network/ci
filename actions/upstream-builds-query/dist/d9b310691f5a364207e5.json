@@ -28,6 +28,12 @@
         "github.com/keep-network/tbtc/solidity": {
             "workflow": "contracts.yml",
             "downstream": [
+                "github.com/keep-network/keep-ecdsa/initcontainer"
+            ]
+        },
+        "github.com/keep-network/keep-ecdsa/initcontainer": {
+            "workflow": "initcontainer.yml",
+            "downstream": [
                 "github.com/keep-network/coverage-pools",
                 "github.com/keep-network/tbtc.js"
             ]
