@@ -1,0 +1,22 @@
+name: "Invoke workflow"
+description: "Dispatches event to run a workflow"
+inputs:
+  environment:
+    description: "The environment to run the build for"
+    required: false
+    default: "dev"
+  upstream_builds:
+    description: "Upstream builds, if empty runs a default workflow"
+    required: false
+  upstream_ref:
+    description: "Ref"
+    required: false
+    default: "main"
+    
+branding:
+  color: "purple"
+  icon: "wind"
+
+runs:
+  using: "node12"
+  main: "dist/main.js"
