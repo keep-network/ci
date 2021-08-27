@@ -56,7 +56,7 @@
             ]
         },
         "github.com/keep-network/allthekeeps": {
-            "workflow": "allthekeeps-ropsten.yml",
+            "workflow": "allthekeeps-testnet.yml",
             "downstream": []
         },
         "github.com/keep-network/tbtc-dapp": {
