@@ -66,3 +66,15 @@ Actions requiring rebuild after changes in above files:
 
 Refer to the READMEs of those actions for more information about rebuilding the
 code.
+
+## Monitoring
+
+The following tools can be used to monitor state of the code and deployments:
+* [AllTheKeeps for Ropsten](https://allthekeeps.test.keep.network/deposits)
+* [Keep Clients Summary](https://monitoring.test.keep.network/d/3r-BohOMz/keep-clients-summary?orgId=1&refresh=30s)
+* Meercode Dashboards with GitHub Actions results:
+  - [Relay request submitter / Testnet](https://meercode.io/public/list/af470c2ebc0da4a0b0cce2589660781e:f385a85f1b9ca5b44b35b1d61405b8569c4664f6cf41a8e71283d45ff4ff61b8f20f11dbb75d767c51a809ccd2ea06af)
+  - [E2E and other scheduled tests in `local-setup`](https://meercode.io/public/list/07e8ed6fc354cb325b817626d09f6dce:c275abc3348031a1db35d79bd48533492d2ece50ae1f6cc696285b2064e33e8a35656aeaba4375687c8491e0fa44cb32)
+  - [Daily builds and unit tests in `keep-core`](https://meercode.io/public/list/07e8ed6fc354cb325b817626d09f6dce:c275abc3348031a1db35d79bd48533492d2ece50ae1f6cc696285b2064e33e8a35656aeaba4375687c8491e0fa44cb32)
+  - [Daily builds and unit tests in other repositories](https://meercode.io/public/list/996bf02d60c51e6ec3143e910a2f2afb:3d43f754b84d6a07209a882c825e273284b07de775fdcb2503e5d425f034c57c920ba8175aa1d7fff01cc6159ac9f80f)
+  - [Deployment on Ropsten](https://meercode.io/public/list/41935b8f5ffcabfd0c0d63412547d720:1c3901d698c5c033914774f1cc5b8ffed254357a89c7a59b20f0c909db2141aa3e23b7a2080036f914c66f3f5cd69fdf)
