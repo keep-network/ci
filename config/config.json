@@ -1,7 +1,7 @@
 {
-    "defaultModule": "github.com/keep-network/keep-core/solidity",
+    "defaultModule": "github.com/keep-network/keep-core/solidity-v1",
     "modules": {
-        "github.com/keep-network/keep-core/solidity": {
+        "github.com/keep-network/keep-core/solidity-v1": {
             "workflow": "contracts.yml",
             "downstream": [
                 "github.com/keep-network/keep-core"
