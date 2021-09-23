@@ -28,12 +28,6 @@
         "github.com/keep-network/tbtc/solidity": {
             "workflow": "contracts.yml",
             "downstream": [
-                "github.com/keep-network/tbtc-v2/solidity"
-            ]
-        },
-        "github.com/keep-network/tbtc-v2/solidity": {
-            "workflow": "contracts.yml",
-            "downstream": [
                 "github.com/keep-network/keep-ecdsa/initcontainer"
             ]
         },
