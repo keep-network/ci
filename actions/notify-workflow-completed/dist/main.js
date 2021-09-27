@@ -16,7 +16,7 @@
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("module.exports = __webpack_require__.p + \"62b3187ef255ff48ecb6.json\";\n\n//# sourceURL=webpack://@keep-network/notify-workflow-completed/./node_modules/@keep-network/ci/config/config.json?");
+eval("module.exports = __webpack_require__.p + \"31111a77b43c63498d9e.json\";\n\n//# sourceURL=webpack://@keep-network/notify-workflow-completed/./node_modules/@keep-network/ci/config/config.json?");
 
 /***/ }),
 

@@ -52,7 +52,7 @@
             ]
         },
         "github.com/keep-network/keep-core/dashboard": {
-            "workflow": "dashboard-testnet-v1.yml",
+            "workflow": "dashboard-v1-testnet.yml",
             "downstream": []
         },
         "github.com/keep-network/tbtc.js": {
