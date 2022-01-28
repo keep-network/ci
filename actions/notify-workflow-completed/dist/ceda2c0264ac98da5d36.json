@@ -1,8 +1,8 @@
 {
-    "defaultModule": "github.com/keep-network/keep-core/solidity-v1",
+    "defaultModule": "github.com/keep-network/keep-core/solidity",
     "modules": {
-        "github.com/keep-network/keep-core/solidity-v1": {
-            "workflow": "contracts-v1.yml",
+        "github.com/keep-network/keep-core/solidity": {
+            "workflow": "contracts.yml",
             "downstream": [
                 "github.com/keep-network/keep-core"
             ]
@@ -52,7 +52,7 @@
             ]
         },
         "github.com/keep-network/keep-core/dashboard": {
-            "workflow": "dashboard-v1-testnet.yml",
+            "workflow": "dashboard-testnet.yml",
             "downstream": []
         },
         "github.com/keep-network/tbtc.js": {
