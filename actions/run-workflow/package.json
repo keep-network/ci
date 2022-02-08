@@ -4,9 +4,7 @@
   "description": "Action to run a GitHub workflow",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prepare": "webpack --progress"
+    "prepare": "ncc build index.js --license LICENSE"
   },
   "keywords": [
     "GitHub",
@@ -21,16 +19,6 @@
     "@keep-network/ci": "file:../../"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@babel/plugin-proposal-class-properties": "^7.13.0",
-    "@babel/plugin-transform-runtime": "^7.13.10",
-    "@babel/preset-env": "^7.13.12",
-    "babel-loader": "^8.2.2",
-    "eslint": "^7.23.0",
-    "eslint-config-keep": "github:keep-network/eslint-config-keep",
-    "mocha": "^8.2.1",
-    "prettier": "^2.2.1",
-    "webpack": "^5.30.0",
-    "webpack-cli": "^4.6.0"
+    "@vercel/ncc": "^0.33.1"
   }
 }
