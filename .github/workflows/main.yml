@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Invoke downstream workflows
-        uses: keep-network/ci/actions/run-workflow@v1
+        uses: keep-network/ci/actions/run-workflow@babel-to-vcc-test
         env:
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
         with:
