@@ -12,11 +12,11 @@ inputs:
     description: "Ref"
     required: false
     default: "main"
-    
+
 branding:
   color: "purple"
   icon: "wind"
 
 runs:
-  using: "node12"
-  main: "dist/main.js"
+  using: "node16"
+  main: "./dist/index.js"

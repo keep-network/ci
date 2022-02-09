@@ -1,6 +1,9 @@
 {
   "extends": ["eslint-config-keep", "prettier"],
-  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
   "env": {
     "es6": true,
     "mocha": true

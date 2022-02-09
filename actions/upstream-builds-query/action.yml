@@ -17,9 +17,9 @@ outputs:
     description: ""
 
 runs:
-  using: node12
-  main: "./dist/main.cjs"
+  using: node16
+  main: "./dist/index.js"
 
 branding:
-  icon: 'search'  
-  color: 'blue'
+  icon: "search"
+  color: "blue"
