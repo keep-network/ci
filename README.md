@@ -75,5 +75,5 @@ The following tools can be used to monitor state of the code and deployments:
 * Meercode Dashboards with GitHub Actions results:
   - [Relay request submitter / Testnet](https://meercode.io/public/list/af470c2ebc0da4a0b0cce2589660781e:f385a85f1b9ca5b44b35b1d61405b8569c4664f6cf41a8e71283d45ff4ff61b8f20f11dbb75d767c51a809ccd2ea06af)
   - [E2E tests in `local-setup`](https://meercode.io/public/list/acef9c5954837d43d0249f46d8c38306:2f621d7a4bbef9f85bb4430a88ead6d456ebdadbb7df6fb51a0aab7c10ec457031e7b0f0ee6b0408c7654a3a51057998)
-  - [Daily builds and unit tests](https://meercode.io/public/list/053530dd02546314c4091f19203a8094:89d01b2400180e5f00f4ae237a4fc3abcce4ed4d4598c0a73c207403d3759e653d5a65a094d520105d311545070beeee)
+  - [Daily builds and unit tests](https://meercode.io/public/list/7d25a53902f2ccecdbb2ee6ce17bb539:d820851c40ae4b0a0086b92864145eb1f15802ce5cc6c17bb1505e1e895fe8fa618e7f4ce90f7709ba5d0e7bf06ebfd2)
   - [Deployment on Ropsten](https://meercode.io/public/list/41935b8f5ffcabfd0c0d63412547d720:1c3901d698c5c033914774f1cc5b8ffed254357a89c7a59b20f0c909db2141aa3e23b7a2080036f914c66f3f5cd69fdf)
