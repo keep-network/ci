@@ -1,78 +1,26 @@
 {
     "defaultModule": "github.com/keep-network/keep-core/solidity-v1",
     "modules": {
-        "github.com/keep-network/keep-core/solidity-v1": {
-            "workflow": "contracts-v1.yml",
-            "downstream": [
-                "github.com/keep-network/keep-core"
-            ]
-        },
-        "github.com/keep-network/keep-core": {
-            "workflow": "client.yml",
-            "downstream": [
-                "github.com/keep-network/keep-ecdsa/solidity"
-            ]
-        },
-        "github.com/keep-network/keep-ecdsa/solidity": {
-            "workflow": "contracts.yml",
-            "downstream": [
-                "github.com/keep-network/keep-ecdsa"
-            ]
-        },
-        "github.com/keep-network/keep-ecdsa": {
-            "workflow": "client.yml",
-            "downstream": [
-                "github.com/keep-network/tbtc/solidity"
-            ]
-        },
-        "github.com/keep-network/tbtc/solidity": {
-            "workflow": "contracts.yml",
-            "downstream": [
-                "github.com/threshold-network/solidity-contracts"
-            ]
-        },
         "github.com/threshold-network/solidity-contracts": {
             "workflow": "contracts.yml",
+            "downstream": [
+                "github.com/keep-network/keep-core/solidity/random-beacon"
+            ]
+        },
+        "github.com/keep-network/keep-core/solidity/random-beacon": {
+            "workflow": "contracts-random-beacon.yml",
+            "downstream": [
+                "github.com/keep-network/keep-core/solidity/ecdsa"
+            ]
+        },
+        "github.com/keep-network/keep-core/solidity/ecdsa": {
+            "workflow": "contracts-ecdsa.yml",
             "downstream": [
                 "github.com/keep-network/tbtc-v2/solidity"
             ]
         },
         "github.com/keep-network/tbtc-v2/solidity": {
             "workflow": "contracts.yml",
-            "downstream": [
-                "github.com/keep-network/keep-ecdsa/initcontainer"
-            ]
-        },
-        "github.com/keep-network/keep-ecdsa/initcontainer": {
-            "workflow": "initcontainer.yml",
-            "downstream": [
-                "github.com/keep-network/coverage-pools",
-                "github.com/keep-network/tbtc.js"
-            ]
-        },
-        "github.com/keep-network/coverage-pools": {
-            "workflow": "contracts.yml",
-            "downstream": [
-                "github.com/keep-network/keep-core/dashboard",
-                "github.com/keep-network/allthekeeps"
-            ]
-        },
-        "github.com/keep-network/keep-core/dashboard": {
-            "workflow": "dashboard-v1-testnet.yml",
-            "downstream": []
-        },
-        "github.com/keep-network/tbtc.js": {
-            "workflow": "node.yml",
-            "downstream": [
-                "github.com/keep-network/tbtc-dapp"
-            ]
-        },
-        "github.com/keep-network/allthekeeps": {
-            "workflow": "allthekeeps-testnet.yml",
-            "downstream": []
-        },
-        "github.com/keep-network/tbtc-dapp": {
-            "workflow": "dapp.yml",
             "downstream": []
         }
     }
