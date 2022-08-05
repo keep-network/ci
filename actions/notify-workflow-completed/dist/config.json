@@ -4,22 +4,22 @@
         "github.com/threshold-network/solidity-contracts": {
             "workflow": "contracts.yml",
             "downstream": [
-                "github.com/keep-network/keep-core/solidity/random-beacon"
+                "github.com/keep-network/keep-core/random-beacon"
             ]
         },
-        "github.com/keep-network/keep-core/solidity/random-beacon": {
+        "github.com/keep-network/keep-core/random-beacon": {
             "workflow": "contracts-random-beacon.yml",
             "downstream": [
-                "github.com/keep-network/keep-core/solidity/ecdsa"
+                "github.com/keep-network/keep-core/ecdsa"
             ]
         },
-        "github.com/keep-network/keep-core/solidity/ecdsa": {
+        "github.com/keep-network/keep-core/ecdsa": {
             "workflow": "contracts-ecdsa.yml",
             "downstream": [
-                "github.com/keep-network/tbtc-v2/solidity"
+                "github.com/keep-network/tbtc-v2"
             ]
         },
-        "github.com/keep-network/tbtc-v2/solidity": {
+        "github.com/keep-network/tbtc-v2": {
             "workflow": "contracts.yml",
             "downstream": []
         }
