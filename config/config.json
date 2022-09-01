@@ -22,14 +22,13 @@
         "github.com/keep-network/tbtc-v2": {
             "workflow": "contracts.yml",
             "downstream": [
-                "github.com/keep-network/keep-core/client"
+                "github.com/keep-network/keep-core/client",
+                "github.com/threshold-network/token-dashboard"
             ]
         },
         "github.com/keep-network/keep-core/client": {
             "workflow": "client.yml",
-            "downstream": [
-                "github.com/threshold-network/token-dashboard"
-            ]
+            "downstream": []
         },
         "github.com/threshold-network/token-dashboard": {
             "workflow": "dashboard-ci.yml",
