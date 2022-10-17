@@ -19,7 +19,7 @@ jobs:
   run-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Invoke downstream workflows
         uses: keep-network/ci/actions/run-workflow@v2

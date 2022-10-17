@@ -20,11 +20,11 @@ jobs:
     name: Verify committed dist directory
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: "12"
 
@@ -50,11 +50,11 @@ jobs:
   upstream-builds-query-unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           persist-credentials: false
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: "12"
 
@@ -65,7 +65,7 @@ jobs:
   upstream-builds-query-e2e-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: ./actions/upstream-builds-query
         id: upstream-builds-query
