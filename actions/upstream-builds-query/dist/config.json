@@ -29,7 +29,8 @@
         "github.com/keep-network/tbtc-v2.ts": {
             "workflow": "typescript.yml",
             "downstream": [
-                "github.com/threshold-network/token-dashboard"
+                "github.com/threshold-network/token-dashboard",
+                "github.com/keep-network/tbtc-mg"
             ]
         },
         "github.com/keep-network/keep-core/client": {
@@ -38,6 +39,10 @@
         },
         "github.com/threshold-network/token-dashboard": {
             "workflow": "dashboard-ci.yml",
+            "downstream": []
+        },
+        "github.com/keep-network/tbtc-mg": {
+            "workflow": "maintainer.yml",
             "downstream": []
         }
     }
