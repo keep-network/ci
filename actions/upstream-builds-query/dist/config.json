@@ -4,6 +4,12 @@
         "github.com/threshold-network/solidity-contracts": {
             "workflow": "contracts.yml",
             "downstream": [
+                "github.com/keep-network/coverage-pools"
+            ]
+        },
+        "github.com/keep-network/coverage-pools": {
+            "workflow": "contracts.yml",
+            "downstream": [
                 "github.com/keep-network/keep-core/random-beacon"
             ]
         },
