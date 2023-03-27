@@ -30,7 +30,7 @@
             "downstream": [
                 "github.com/keep-network/keep-core/client",
                 "github.com/keep-network/tbtc-v2.ts",
-                "github.com/keep-network/cross-chain/arbitrum"
+                "github.com/keep-network/tbtc-v2/arbitrum"
             ]
         },
         "github.com/keep-network/tbtc-v2.ts": {
@@ -52,7 +52,7 @@
             "workflow": "maintainer.yml",
             "downstream": []
         },
-        "github.com/keep-network/cross-chain/arbitrum": {
+        "github.com/keep-network/tbtc-v2/arbitrum": {
             "workflow": "cross-chain-arbitrum.yml",
             "downstream": []
         }
