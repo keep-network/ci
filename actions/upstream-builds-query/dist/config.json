@@ -29,15 +29,15 @@
             "workflow": "contracts.yml",
             "downstream": [
                 "github.com/keep-network/keep-core/client",
-                "github.com/keep-network/tbtc-v2.ts",
+                "github.com/keep-network/tbtc-v2/typescript",
                 "github.com/keep-network/tbtc-v2/arbitrum"
             ]
         },
-        "github.com/keep-network/tbtc-v2.ts": {
+        "github.com/keep-network/tbtc-v2/typescript": {
             "workflow": "typescript.yml",
             "downstream": [
                 "github.com/threshold-network/token-dashboard",
-                "github.com/keep-network/tbtc-mg"
+                "github.com/keep-network/optimistic-minting"
             ]
         },
         "github.com/keep-network/keep-core/client": {
@@ -48,7 +48,7 @@
             "workflow": "dashboard-ci.yml",
             "downstream": []
         },
-        "github.com/keep-network/tbtc-mg": {
+        "github.com/keep-network/optimistic-minting": {
             "workflow": "maintainer.yml",
             "downstream": []
         },
