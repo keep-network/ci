@@ -8,7 +8,7 @@ name: Generate and push Solidity API documentation
 on:
   workflow_call:
     inputs:
-      projectSubfolder:
+      projectDir:
         description: "A root's subfolder containing the `contracts` folder and
           the Yarn / Hardhat configuration. Leave empty ('') if the project
           config resides in the root. If config resides in a subfolder, provide
@@ -18,7 +18,7 @@ on:
         type: string
         required: false
         default: ""
-      removeTrailingSpacesInComments:
+      trimComments:
         description: "True if you want to remove space characters between `///`
           and a comment text in the Solidity files, before generating `.md`
           files. This may be needed to improve the look of the lists in the
@@ -29,7 +29,7 @@ on:
       preProcessingCommand:
         description: "An optional additional bash command to be executed before
           transforming the Solidity files to an HTML file. The command will be
-          executed in the path specified by `projectSubfolder`."
+          executed in the path specified by `projectDir`."
         type: string
         required: false
       addTOC:
@@ -55,7 +55,8 @@ on:
         default: true
       verifyCommits:
         description: "True if you want to sign commits updating the docs using
-          GPG key. You'll need to specify XXX and YYY secrets."
+          GPG key. You'll need to specify `gpgPrivateKey` and `gpgPassphrase`
+          secrets."
         type: boolean
         required: false
         default: false
@@ -132,7 +133,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: .${{ inputs.projectSubfolder }}
+        working-directory: .${{ inputs.projectDir }}
     steps:
       - uses: actions/checkout@v3
 
@@ -145,7 +146,7 @@ jobs:
       # substitutes `///` + 0 or more spaces/tabs with just `///`.
 
       - name: Prepare contract files for further processing
-        if: inputs.removeTrailingSpacesInComments
+        if: inputs.trimComments
         shell: bash
         run: |
           find ./contracts \
@@ -163,7 +164,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: contracts-after-preprocessing
-          path: .${{ inputs.projectSubfolder }}/contracts
+          path: .${{ inputs.projectDir }}/contracts
 
       # We may need this step in case we execute the workflow in a project
       # that has a dependency to `@summa-tx/relay-sol@2.0.2` package, which
@@ -195,7 +196,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: contracts-final-output
-          path: .${{ inputs.projectSubfolder }}/generated-docs
+          path: .${{ inputs.projectDir }}/generated-docs
 
       - name: Post link to artifacts in PR comment
         if: |
