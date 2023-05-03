@@ -71,9 +71,9 @@ on:
         type: string
         required: false
         default: "."
-      destinationBranch:
-        description: "A branch on the destination repository where the generated
-          Solidity docs will be pushed to (must exist)."
+      destinationBaseBranch:
+        description: "A branch on the destination repository which will be set
+          as a base branch of the PR updating Solidity docs (must exist)."
         type: string
         required: false
         default: "main"
@@ -222,28 +222,52 @@ jobs:
           git_user_signingkey: true
           git_commit_gpgsign: true
 
-      - name: Sync generated docs with the specified repository
+      - name: Sync generated docs with the specified repository and create PR
         if: inputs.publish == true
         env:
           API_TOKEN_GITHUB: ${{ secrets.githubToken }}
         run: |
-          git config --global user.email ${{ inputs.userEmail }}
-          git config --global user.name ${{ inputs.userName }}
-          git clone --single-branch --branch ${{ inputs.destinationBranch }} \
-            https://x-access-token:$API_TOKEN_GITHUB@github.com/${{ inputs.destinationRepo }}.git \
-            dest-repo-clone
-          cd dest-repo-clone
-          mkdir -p ${{ inputs.destinationFolder }}
-          rsync -avh ${{ inputs.rsyncDelete && '--delete' || '' }} \
-            ../generated-docs \
-            ${{ inputs.destinationFolder }}
-          git add -A
-          if git status | grep -q "Changes to be committed"
-          then
-            git commit ${{ inputs.verifyCommits && '-S' || '' }} -m "Update docs by https://github.com/${{ github.repository}}/actions/runs/${{ github.run_id}}"
-            echo "Pushing git commit"
-            git push --set-upstream origin HEAD:${{ inputs.destinationBranch }}
-          else
-            echo "No changes detected"
-          fi
-
+          echo "▶ Configure environment variables"
+            head_branch=auto-update-solidity-api-docs
+            base_branch=${{ inputs.destinationBaseBranch }}
+          echo "▶ Checkout destination repo"
+            git clone --branch $base_branch \
+              https://x-access-token:$API_TOKEN_GITHUB@github.com/${{ inputs.destinationRepo }}.git \
+              dest-repo-clone
+          echo "▶ Create/checkout head branch"
+            cd dest-repo-clone
+            git checkout $head_branch || git checkout -b $head_branch
+          echo "▶ Synchronize docs"
+            mkdir -p ${{ inputs.destinationFolder }}
+            rsync -avh ${{ inputs.rsyncDelete && '--delete' || '' }} \
+              ../generated-docs \
+              ${{ inputs.destinationFolder }}
+          echo "▶ Commit changes"
+            git add -A
+            if git status | grep -q "Changes to be committed"
+            then
+              git config --global user.email ${{ inputs.userEmail }}
+              git config --global user.name ${{ inputs.userName }}
+              git commit ${{ inputs.verifyCommits && '-S' || '' }} \
+                -m "Update docs by https://github.com/${{ github.repository}}/actions/runs/${{ github.run_id}}"
+              echo "▶ Push commit"
+                git push --set-upstream origin HEAD:$head_branch
+              echo "▶ Check if PR for the head branch already exists"
+                dest_org=${${{ inputs.destinationRepo }}%%/*}
+                pr_for_head=$(curl -L \
+                  -H "Accept: application/vnd.github+json" \
+                  -H "Authorization: Bearer $API_TOKEN_GITHUB" \
+                  -H "X-GitHub-Api-Version: 2022-11-28" \
+                  "https://api.github.com/repos/${{ inputs.destinationRepo }}/pulls?status=open&head=$dest_org:$head_branch")
+                if [[ $pr_for_head == $'[\n\n]' ]]; then
+                  echo "▶ Checked. A PR for the head branch ($head_branch) will be created"
+                    hub pull-request --base $base_branch \
+                      --message "Update Solidity API docs" \
+                      --message "Docs updated by workflow: https://github.com/${{ github.repository}}/actions/runs/${{ github.run_id}}"
+                else
+                  echo "▶ Checked. A PR for head branch ($head_branch) already exists and got updated."
+                fi
+            else
+              echo "▶ No changes detected, no commits will be made."
+              exit 0
+            fi
