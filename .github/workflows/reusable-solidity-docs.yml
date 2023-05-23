@@ -181,7 +181,9 @@ jobs:
 
       # Generates `.md` file(s) based on config in the `hardhat.config.ts`.
       - name: Build Markdown docs
-        run: yarn run hardhat docgen
+        run: |
+          yarn run clean
+          yarn run hardhat docgen
 
       - name: Add Table of Contents
         if: inputs.addTOC == true
