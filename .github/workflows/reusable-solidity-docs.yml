@@ -253,7 +253,7 @@ jobs:
               echo "▶ Push commit"
                 git push --set-upstream origin HEAD:$head_branch
               echo "▶ Check if PR for the head branch already exists"
-                dest_org=${${{ inputs.destinationRepo }}%%/*}
+              dest_org=$(echo ${{ inputs.destinationRepo }} | cut -d'/' -f1)
                 pr_for_head=$(curl -L \
                   -H "Accept: application/vnd.github+json" \
                   -H "Authorization: Bearer $API_TOKEN_GITHUB" \
