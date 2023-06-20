@@ -4,7 +4,7 @@ name: Generate and push Solidity API documentation
 # projects's dev dependencies and is configured in Hardhat config (see
 # https://github.com/OpenZeppelin/solidity-docgen#usage).
 # The workflow expects `outputDir` to be set to `generated-docs`. You may
-# also need to specify other configs, like `temlates` or `exclude`.
+# also need to specify other configs, like `templates` or `exclude`.
 on:
   workflow_call:
     inputs:
