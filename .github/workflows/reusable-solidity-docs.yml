@@ -175,6 +175,13 @@ jobs:
         shell: bash
         run: git config --global url."https://".insteadOf git://
 
+      - uses: actions/setup-node@v3
+        with:
+          # Using fixed version, because 18.16 was sometimes causing issues with
+          # artifacts generation during `hardhat compile` - see
+          # https://github.com/NomicFoundation/hardhat/issues/3877
+          node-version: "18.15.0"
+
       - name: Install dependencies
         shell: bash
         run: yarn install --frozen-lockfile
