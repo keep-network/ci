@@ -4,7 +4,7 @@ name: Generate and push Solidity API documentation
 # projects's dev dependencies and is configured in Hardhat config (see
 # https://github.com/OpenZeppelin/solidity-docgen#usage).
 # The workflow expects `outputDir` to be set to `generated-docs`. You may
-# also need to specify other configs, like `temlates` or `exclude`.
+# also need to specify other configs, like `templates` or `exclude`.
 on:
   workflow_call:
     inputs:
@@ -175,6 +175,13 @@ jobs:
         shell: bash
         run: git config --global url."https://".insteadOf git://
 
+      - uses: actions/setup-node@v3
+        with:
+          # Using fixed version, because 18.16 was sometimes causing issues with
+          # artifacts generation during `hardhat compile` - see
+          # https://github.com/NomicFoundation/hardhat/issues/3877
+          node-version: "18.15.0"
+
       - name: Install dependencies
         shell: bash
         run: yarn install --frozen-lockfile
@@ -225,24 +232,24 @@ jobs:
       - name: Sync generated docs with the specified repository and create PR
         if: inputs.publish == true
         env:
-          API_TOKEN_GITHUB: ${{ secrets.githubToken }}
+          GITHUB_TOKEN: ${{ secrets.githubToken }}
         run: |
-          echo "▶ Configure environment variables"
+          echo "➞ Configure environment variables"
             head_branch=auto-update-solidity-api-docs
             base_branch=${{ inputs.destinationBaseBranch }}
-          echo "▶ Checkout destination repo"
+          echo "➞ Checkout destination repo"
             git clone --branch $base_branch \
-              https://x-access-token:$API_TOKEN_GITHUB@github.com/${{ inputs.destinationRepo }}.git \
+              https://${{ inputs.userName }}:$GITHUB_TOKEN@github.com/${{ inputs.destinationRepo }}.git \
               dest-repo-clone
-          echo "▶ Create/checkout head branch"
+          echo "➞ Create/checkout head branch"
             cd dest-repo-clone
             git checkout $head_branch || git checkout -b $head_branch
-          echo "▶ Synchronize docs"
+          echo "➞ Synchronize docs"
             mkdir -p ${{ inputs.destinationFolder }}
             rsync -avh ${{ inputs.rsyncDelete && '--delete' || '' }} \
               ../generated-docs \
               ${{ inputs.destinationFolder }}
-          echo "▶ Commit changes"
+          echo "➞ Commit changes"
             git add -A
             if git status | grep -q "Changes to be committed"
             then
@@ -250,24 +257,24 @@ jobs:
               git config --global user.name ${{ inputs.userName }}
               git commit ${{ inputs.verifyCommits && '-S' || '' }} \
                 -m "Update docs by https://github.com/${{ github.repository}}/actions/runs/${{ github.run_id}}"
-              echo "▶ Push commit"
+              echo "➞ Push commit"
                 git push --set-upstream origin HEAD:$head_branch
-              echo "▶ Check if PR for the head branch already exists"
+              echo "➞ Check if PR for the head branch already exists"
               dest_org=$(echo ${{ inputs.destinationRepo }} | cut -d'/' -f1)
                 pr_for_head=$(curl -L \
                   -H "Accept: application/vnd.github+json" \
-                  -H "Authorization: Bearer $API_TOKEN_GITHUB" \
+                  -H "Authorization: Bearer $GITHUB_TOKEN" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
                   "https://api.github.com/repos/${{ inputs.destinationRepo }}/pulls?status=open&head=$dest_org:$head_branch")
                 if [[ $pr_for_head == $'[\n\n]' ]]; then
-                  echo "▶ Checked. A PR for the head branch ($head_branch) will be created"
+                  echo "➞ Checked. A PR for the head branch ($head_branch) will be created"
                     hub pull-request --base $base_branch \
                       --message "Update Solidity API docs" \
                       --message "Docs updated by workflow: https://github.com/${{ github.repository}}/actions/runs/${{ github.run_id}}"
                 else
-                  echo "▶ Checked. A PR for head branch ($head_branch) already exists and got updated."
+                  echo "➞ Checked. A PR for head branch ($head_branch) already exists and got updated."
                 fi
             else
-              echo "▶ No changes detected, no commits will be made."
+              echo "➞ No changes detected, no commits will be made."
               exit 0
             fi
