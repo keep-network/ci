@@ -45,7 +45,7 @@
             "downstream": []
         },
         "github.com/threshold-network/dapp": {
-            "workflow": "dashboard-ci.yml",
+            "workflow": "dapp-ci.yml",
             "downstream": []
         },
         "github.com/keep-network/optimistic-minting": {
