@@ -36,7 +36,7 @@
         "github.com/keep-network/tbtc-v2/typescript": {
             "workflow": "typescript.yml",
             "downstream": [
-                "github.com/threshold-network/token-dashboard",
+                "github.com/threshold-network/dapp",
                 "github.com/keep-network/optimistic-minting"
             ]
         },
@@ -44,8 +44,8 @@
             "workflow": "client.yml",
             "downstream": []
         },
-        "github.com/threshold-network/token-dashboard": {
-            "workflow": "dashboard-ci.yml",
+        "github.com/threshold-network/dapp": {
+            "workflow": "dapp-ci.yml",
             "downstream": []
         },
         "github.com/keep-network/optimistic-minting": {
