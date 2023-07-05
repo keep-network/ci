@@ -28,8 +28,8 @@ on:
         default: true
       preProcessingCommand:
         description: "An optional additional bash command to be executed before
-          transforming the Solidity files to an HTML file. The command will be
-          executed in the path specified by `projectDir`."
+          transforming the Solidity files to Markdown file(s). The command will
+          be executed in the path specified by `projectDir`."
         type: string
         required: false
       addTOC:
@@ -47,6 +47,12 @@ on:
         type: string
         required: false
         default: "-i --maxdepth 2"
+      postProcessingCommand:
+        description: "An optional additional bash command to be executed after
+          transforming the Solidity files to Markdown file(s). The command will
+          be executed in the path specified by `projectDir`."
+        type: string
+        required: false
       publish:
         description: "True if you want to push the generated file(s) to the
           destination repository."
@@ -197,6 +203,11 @@ jobs:
           sed -i '2s/^/\<!-- toc --\> \n/' ./generated-docs/index.md
           sed -i '2s/^/## Table Of Contents \n/' ./generated-docs/index.md
           markdown-toc ${{ inputs.tocOptions }} ./generated-docs/index.md
+
+      - name: Execute additional command
+        if: inputs.postProcessingCommand != null
+        shell: bash
+        run: ${{ inputs.postProcessingCommand }}
 
       - name: Export artifacts
         if: inputs.exportAsGHArtifacts == true
