@@ -20,7 +20,7 @@ The action supports following input parameters:
 ```yaml
       - uses: keep-network/ci/actions/load-env-variables@v1
         with:
-          environment: 'ropsten'
+          environment: 'sepolia'
 ```
 
 ## Configuration of the input file
@@ -30,7 +30,7 @@ repository under `./config/env/` directory. The idea is to have
 separate config files for separate environments.
 
 The name of each file should indicate the name of the environment to which
-the variables' values apply and should have `.env` extension (e.g. `ropsten.env`). 
+the variables' values apply and should have `.env` extension (e.g. `sepolia.env`). 
 
 Variables stored in the file must be written in the `name=value` format.
 
@@ -61,7 +61,7 @@ jobs:
       - name: Load environment variables
         uses: keep-network/ci/actions/load-env-variables@v1
         with:
-          filename: 'ropsten'
+          filename: 'sepolia'
       - name: Use loaded variables
         # Will print "My first variable: first-var".
         run: |
