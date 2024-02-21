@@ -24,7 +24,7 @@ jobs:
       - name: Load environment variables
         uses: ./actions/load-env-variables
         with:
-          environment: 'ropsten'
+          environment: 'sepolia'
           ref: 'main'
 
       - name: Use imported variables

@@ -7,7 +7,7 @@ inputs:
   environment:
     description: >
       Name of the environment indicating which config file will be used for
-      variables import. For example, if "ropsten" provided, "ropsten.env" config
+      variables import. For example, if "sepolia" provided, "sepolia.env" config
       file will be used for variables import.
       Config file of the name <environment>.env must exist in
       keep-network/ci/config/env/ and must contain list of the variables in the
