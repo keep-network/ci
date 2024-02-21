@@ -141,7 +141,7 @@ jobs:
       run:
         working-directory: .${{ inputs.projectDir }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # In this step we modify the format of the comments in the Solidity
       # contracts files. We do that because our original formatting is not
@@ -181,7 +181,7 @@ jobs:
         shell: bash
         run: git config --global url."https://".insteadOf git://
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           # Using fixed version, because 18.16 was sometimes causing issues with
           # artifacts generation during `hardhat compile` - see
@@ -221,7 +221,7 @@ jobs:
           inputs.exportAsGHArtifacts == true
             && inputs.commentPR == true
             && startsWith(github.ref, 'refs/pull')
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             github.rest.issues.createComment({
@@ -233,7 +233,7 @@ jobs:
 
       - name: Import GPG key
         if: inputs.publish == true && inputs.verifyCommits == true
-        uses: crazy-max/ghaction-import-gpg@111c56156bcc6918c056dbef52164cfa583dc549 # v5.2.0
+        uses: crazy-max/ghaction-import-gpg@01dd5d3ca463c7f10f7f4f7b4f177225ac661ee4 # v6.1.0
         with:
           gpg_private_key: ${{ secrets.gpgPrivateKey }}
           passphrase: ${{ secrets.gpgPassphrase }}
